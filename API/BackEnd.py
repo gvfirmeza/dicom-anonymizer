@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Pasta onde os arquivos DICOM enviados serão armazenados temporariamente
-UPLOAD_FOLDER = 'API/uploads'
+UPLOAD_FOLDER = 'C:\\Users\\202301135737\\Desktop\\dicom-anonymizer\\API\\uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def anonymize_dicom(file_path):
@@ -29,7 +29,7 @@ def anonymize_dicom(file_path):
     except Exception as e:
         return str(e)
 
-@app.route('/anonimizar_dicom', methods=['POST'])
+@app.route('/anonimizar', methods=['POST'])
 def anonimizar_dicom():
     try:
         # Verifique se o arquivo DICOM foi enviado como parte da solicitação POST
