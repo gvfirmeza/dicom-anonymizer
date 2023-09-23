@@ -22,12 +22,25 @@ function UploadFile() {
         },
       });
       console.log('Arquivo enviado com sucesso');
-      // Você pode acessar a resposta da API Flask aqui
       console.log('Resposta da API:', response.data);
-      setResponse(response.data); // Armazene a resposta em um estado
+      setResponse(response.data);
     } catch (error) {
       console.error('Erro ao enviar o arquivo', error);
     }
+  };
+
+  const renderDownloadLink = () => {
+    if (response && response.downloadUrl) {
+      return (
+        <div>
+          <h2>Download do Arquivo Anonimizado:</h2>
+          <a href={`http://localhost:5000${response.downloadUrl}`} download="dicom_anonimizado.dcm">
+            Baixar Arquivo Anonimizado
+          </a>
+        </div>
+      );
+    }
+    return null;
   };
 
   return (
@@ -38,11 +51,9 @@ function UploadFile() {
         <button type="submit">Enviar</button>
       </form>
 
-      {/* Exibir a resposta da API, se houver */}
       {response && (
         <div>
-          <h2>Resposta da API:</h2>
-          <pre>{JSON.stringify(response, null, 2)}</pre>
+          {renderDownloadLink()}
         </div>
       )}
     </div>
