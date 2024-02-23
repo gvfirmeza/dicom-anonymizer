@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/anonimizar_dicom": {"origins": "http://localhost:3000"}})  # Configure o CORS para a sua aplicação
 
 # Pasta onde os arquivos DICOM enviados serão armazenados temporariamente
-UPLOAD_FOLDER = 'C:\\Users\\pmvie\\DEV\\dicom-anonymizer\\API\\uploads'
+UPLOAD_FOLDER = '.\uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def anonymize_dicom(file_path):
